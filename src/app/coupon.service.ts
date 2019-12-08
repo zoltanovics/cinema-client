@@ -14,8 +14,8 @@ export class CouponService {
     },
     {
       id: 2,
-      name: 'Dolgozó',
-      description: 'Normál ár',
+      name: 'Gyerek',
+      description: '75% kedvezmény',
     },
   ]
 
