@@ -1,0 +1,12 @@
+<h1 class="display-2">Movie #{{ movie.id }}</h1>
+<dl class="row">
+  <dt class="col-sm-3">Name</dt>
+  <dd class="col-sm-9">{{ movie.name }}</dd>
+  
+  <dt class="col-sm-3">Genre</dt>
+  <dd class="col-sm-9">{{ movie.genre }}</dd>
+  
+  <dt class="col-sm-3">Description</dt>
+  <dd class="col-sm-9">{{ movie.description }}</dd>
+</dl>
+<button mat-raised-button routerLink="/movies">Back</button>

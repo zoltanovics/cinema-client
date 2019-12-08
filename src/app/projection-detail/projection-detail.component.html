@@ -1,0 +1,12 @@
+<h1 class="display-2">Projection #{{ projection.id }}</h1>
+<dl class="row">
+  <dt class="col-sm-3">Movie</dt>
+  <dd class="col-sm-9">{{ projection.movie.name }}</dd>
+  
+  <dt class="col-sm-3">Room</dt>
+  <dd class="col-sm-9">{{ projection.room.name }}</dd>
+
+  <dt class="col-sm-3">Date</dt>
+  <dd class="col-sm-9">{{ projection.projectionDate }}</dd>
+</dl>
+<button mat-raised-button routerLink="/projections">Back</button>

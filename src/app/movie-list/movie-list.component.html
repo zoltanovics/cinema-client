@@ -1,0 +1,27 @@
+<h1 class="display-2">Movies</h1>
+
+<genre-filter [genre]="selectedGenre" (onChange)="onFilterChange($event)"></genre-filter>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of filteredMovies" (click)="onSelectMovie(movie)" [class.table-info]="movie === selectedMovie">
+        <th scope="row">{{ movie.id }}</th>
+        <td><a [routerLink]="['/movies', movie.id]">{{ movie.name }}</a></td>
+        <td>{{ movie.genre }}</td>
+        <td>{{ movie.description }}</td>
+      </tr>
+  </tbody>
+</table>
+
+<div class="col" *ngIf="selectedMovie">
+    <button mat-raised-button color="primary" (click)="onNewClick()">New room</button>
+  <movie-form [movie]="selectedMovie" (onSubmit)="onFormSubmit($event)"></movie-form>
+</div>

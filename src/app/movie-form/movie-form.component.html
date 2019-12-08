@@ -1,0 +1,38 @@
+<form (submit)="submit(movieForm)" #movieForm="ngForm">
+    <div class="form-group">
+      <!-- <small id="locationHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+      <mat-form-field>
+        <input
+          name="name"
+          [(ngModel)]="model.name"
+          matInput type="text"
+          aria-describedby="locationHelp"
+          #name="ngModel"
+          placeholder="Enter name">
+      </mat-form-field>
+      <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors['required']">
+        Name is required!
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+        <!-- <small id="genreHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+        <mat-form-field>
+          <input
+            name="genre"
+            matInput type="text"
+            aria-describedby="genreHelp"
+            [(ngModel)]="model.genre"
+            placeholder="Enter genre">
+        </mat-form-field>
+      </div>
+    
+    <div class="form-group">
+      <!-- <small id="descriptionHelp" class="form-text text-muted">The error details</small> -->
+      <mat-form-field>
+        <textarea name="description" [(ngModel)]="model.description" matInput aria-describedby="descriptionHelp" placeholder="Enter description"></textarea>
+      </mat-form-field>
+    </div>
+    
+    <button [disabled]="!movieForm.valid" type="submit" mat-raised-button color="primary" routerLink="/movies">Save movie</button>
+  </form>
