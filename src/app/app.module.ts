@@ -4,6 +4,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routing/routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule, MatIconModule, MatButtonModule, MatSelectModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +23,10 @@ import { RoomListComponent } from './room-list/room-list.component';
 import { ProjectionDetailComponent } from './projection-detail/projection-detail.component';
 import { ProjectionFormComponent } from './projection-form/projection-form.component';
 import { ProjectionListComponent } from './projection-list/projection-list.component';
+import { MovieService } from './movie.service';
+import { CouponService } from './coupon.service';
+import { ProjectionService } from './projection.service';
+import { RoomService } from './room.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,7 @@ import { ProjectionListComponent } from './projection-list/projection-list.compo
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NgbModule,
     MatSelectModule,
     NoopAnimationsModule,
@@ -54,7 +60,7 @@ import { ProjectionListComponent } from './projection-list/projection-list.compo
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [MovieService,CouponService,ProjectionService,RoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

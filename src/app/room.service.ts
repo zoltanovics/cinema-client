@@ -1,40 +1,42 @@
 import { Injectable } from '@angular/core';
 import {Room } from './room';
+import { Observable } from 'rxjs/internal/Observable';
+import { HttpClient } from '@angular/common/http';
+import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
 
-  rooms: Room[] = [
-    {
-      id: 1,
-      name: '1-es szoba',
-      size: 120,
-    },
-    {
-      id: 2,
-      name: '2-es szoba',
-      size: 150,
-    },
-    {
-      id: 3,
-      name: '3-as szoba',
-      size: 100,
-    },
-  ]
+  rooms: Room[] = []
 
-  constructor() { }
+  room: Room;
+
+  roomsUrl : string;
+
+  constructor(private http: HttpClient, private router: Router) {
+    this.roomsUrl = 'http://localhost:8080/rooms'; 
+  }
+
+  public findAll(): Observable<Room[]> {
+    return this.http.get<Room[]>(this.roomsUrl);
+  }
 
   getRooms() {
     return this.rooms;
   }
 
   addRoom(room : Room) {
-    this.rooms.push(room);
+    this.http.post(this.roomsUrl, room).subscribe();
   }
+
+  updateRoom(room: Room) {
+    this.http.put(this.roomsUrl+"/"+room.id, room).subscribe();
+  } 
   
   getRoom(id) {
-    return this.rooms.find(i => i.id == id);
+    return this.http.get<Room>(this.roomsUrl+"/"+id);
   }
 }

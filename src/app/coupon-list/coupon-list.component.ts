@@ -14,7 +14,6 @@ export class CouponListComponent implements OnInit {
   constructor(
     private couponService: CouponService
   ) { 
-    this.coupons = couponService.getCoupons();
   }
 
   selectedCoupon: Coupon;
@@ -28,15 +27,18 @@ export class CouponListComponent implements OnInit {
     this.selectedCoupon.name = coupon.name;
     this.selectedCoupon.description = coupon.description;
     if (coupon.id > 0) {
-      
+      this.couponService.updateCoupon(coupon);
     } else {
-      this.selectedCoupon.id = this.coupons.length+1;
-      this.coupons.push(this.selectedCoupon);
+      this.couponService.addCoupon(this.selectedCoupon);
     }
     this.selectedCoupon = null;
+    window.location.reload();
   }
   
   ngOnInit() {
+    this.couponService.findAll().subscribe(data => {
+      this.coupons = data;
+    })
   }
 
   onNewClick() {

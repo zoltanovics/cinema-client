@@ -14,7 +14,6 @@ export class ProjectionListComponent implements OnInit {
   constructor(
     private projectionService: ProjectionService
   ) { 
-    this.projections = projectionService.getProjections();
   }
 
   selectedProjection: Projection;
@@ -29,17 +28,22 @@ export class ProjectionListComponent implements OnInit {
     this.selectedProjection.room = projection.room;
     this.selectedProjection.projectionDate = projection.projectionDate;
     if (projection.id > 0) {
-      
+      this.projectionService.updateProjection(projection);
     } else {
-      this.selectedProjection.id = this.projections.length+1;
-      this.projections.push(this.selectedProjection);
+      this.projectionService.addProjection(this.selectedProjection);
     }
     this.selectedProjection = null;
+    window.location.reload();
   }
   
  
 
   ngOnInit() {
+    this.projectionService.findAll().subscribe(data => {
+      this.projections = data;
+      console.log(this.projections);
+    })
+    
   }
 
   onNewClick() {

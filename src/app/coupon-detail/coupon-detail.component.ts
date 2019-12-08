@@ -19,7 +19,9 @@ export class CouponDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.coupon = this.couponService.getCoupon(id);
+    this.couponService.getCoupon(id).subscribe(data => {
+      this.coupon = data;
+    });
   }
 
 }

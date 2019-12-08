@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class GenreFilterComponent implements OnInit {
 
-  genres: string[] = [ 'Thriller', 'Dráma' ];
+  genres: string[] = [ 'Thriller', 'Drama' ];
   @Input('genre') selectedGenre: string = '';
   @Output() onChange = new EventEmitter<string>();
 

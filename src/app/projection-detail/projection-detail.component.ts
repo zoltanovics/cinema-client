@@ -19,7 +19,9 @@ export class ProjectionDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.projection = this.projectionService.getProjection(id);
+    this.projectionService.getProjection(id).subscribe(data => {
+      this.projection = data;
+    });
   }
 
 }

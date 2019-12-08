@@ -7,6 +7,6 @@
   <dd class="col-sm-9">{{ projection.room.name }}</dd>
 
   <dt class="col-sm-3">Date</dt>
-  <dd class="col-sm-9">{{ projection.projectionDate }}</dd>
+  <dd class="col-sm-9">{{ projection.projectionDate.toString().substring(0,16) }}</dd>
 </dl>
 <button mat-raised-button routerLink="/projections">Back</button>

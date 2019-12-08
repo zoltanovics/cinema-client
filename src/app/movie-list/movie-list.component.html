@@ -22,6 +22,6 @@
 </table>
 
 <div class="col" *ngIf="selectedMovie">
-    <button mat-raised-button color="primary" (click)="onNewClick()">New room</button>
+    <button mat-raised-button color="primary" (click)="onNewClick()">New movie</button>
   <movie-form [movie]="selectedMovie" (onSubmit)="onFormSubmit($event)"></movie-form>
 </div>

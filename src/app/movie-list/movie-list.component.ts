@@ -14,7 +14,7 @@ export class MovieListComponent implements OnInit {
   constructor(
     private movieService: MovieService
   ) { 
-    this.movies = movieService.getMovies();
+   
   }
 
   filteredMovies: Movie[];
@@ -31,17 +31,23 @@ export class MovieListComponent implements OnInit {
     this.selectedMovie.genre = movie.genre;
     this.selectedMovie.description = movie.description;
     if (movie.id > 0) {
-      
+      this.movieService.updateMovie(movie);
     } else {
-      this.selectedMovie.id = this.movies.length+1;
-      this.movies.push(this.selectedMovie);
+      this.movieService.addMovie(this.selectedMovie);
     }
     this.selectedMovie = null;
+    window.location.reload();
   }
   
  
 
   ngOnInit() {
+    this.movieService.findAll().subscribe(data => {
+      this.movies = data;
+      this.filteredMovies = data;
+      console.log(this.movies);
+    })
+    
     this.selectedGenre = '';
     this.filter();
   }
