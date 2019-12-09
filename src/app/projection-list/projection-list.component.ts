@@ -33,21 +33,30 @@ export class ProjectionListComponent implements OnInit {
       this.projectionService.addProjection(this.selectedProjection);
     }
     this.selectedProjection = null;
-    window.location.reload();
+    //window.location.reload();
   }
   
  
 
   ngOnInit() {
     this.projectionService.findAll().subscribe(data => {
-      this.projections = data;
-      console.log(this.projections);
+     /* let i = 1;
+      data.forEach(element => {
+        this.projectionService.getProjection(i).subscribe(data => {
+          this.projections.push(data);
+        });
+        i = i+1;
+      });*/
+      this.projections = data;  
     })
+    console.log(this.projections);
     
   }
 
   onNewClick() {
     this.selectedProjection = new Projection();
   }
+
+  
 
 }
