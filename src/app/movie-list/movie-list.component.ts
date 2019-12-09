@@ -61,6 +61,11 @@ export class MovieListComponent implements OnInit {
     this.selectedMovie = new Movie();
   }
 
+  onDeleteClick(movie : Movie) {
+    this.movieService.deleteMovie(movie);
+    
+  }
+
   filter() {
     this.filteredMovies = this.selectedGenre === ''
     ? this.movies

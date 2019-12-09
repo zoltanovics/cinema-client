@@ -27,6 +27,8 @@ import { MovieService } from './movie.service';
 import { CouponService } from './coupon.service';
 import { ProjectionService } from './projection.service';
 import { RoomService } from './room.service';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { RoomService } from './room.service';
     RoomListComponent,
     ProjectionDetailComponent,
     ProjectionFormComponent,
-    ProjectionListComponent
+    ProjectionListComponent,
+    UserListComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

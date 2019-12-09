@@ -45,4 +45,9 @@ export class CouponListComponent implements OnInit {
     this.selectedCoupon = new Coupon();
   }
 
+  onDeleteClick(coupon : Coupon) {
+    this.coupons.splice(this.coupons.indexOf(coupon),1);
+    this.couponService.deleteCoupon(coupon);
+  }
+
 }

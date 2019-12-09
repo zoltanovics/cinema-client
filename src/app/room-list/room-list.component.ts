@@ -24,6 +24,10 @@ export class RoomListComponent implements OnInit {
     this.selectedRoom = room;
   }
 
+  onDeleteClick(room) {
+    this.roomService.deleteRoom(room);
+  }
+
   onFormSubmit(room: Room) {
     this.selectedRoom.name = room.name;
     this.selectedRoom.size = room.size;

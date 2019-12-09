@@ -7,6 +7,7 @@
       <th scope="col">Movie</th>
       <th scope="col">Room</th>
       <th scope="col">Date</th>
+      <th scope="col">Tools</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,7 @@
         <td><a [routerLink]="['/movies', projection.movie.id]">{{ projection.movie.name }}</a></td>
         <td><a [routerLink]="['/rooms', projection.room.id]">{{ projection.room.name }}</a></td>
         <td><a [routerLink]="['/projections', projection.id]">{{ projection.projectionDate.toString().substr(0,10) }}</a></td>
+        <td> <button mat-raised-button color="warn" (click)="onDeleteClick(projection)">Delete</button> </td>
       </tr>
   </tbody>
 </table>

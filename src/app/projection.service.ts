@@ -47,8 +47,22 @@ export class ProjectionService {
   }
 
   addProjection(projection : Projection) {
-    console.log(projection);
-    this.http.post(this.projectionsUrl, projection).subscribe();
+    this.filteredMovies = this.movies.filter(i=> i.name === projection.movie.name);
+    projection.movie = this.filteredMovies.pop();
+    this.filteredRooms = this.rooms.filter(i=> i.name === projection.room.name);
+    projection.room = this.filteredRooms.pop();
+    this.http.post(this.projectionsUrl, {
+      "id" : projection.id,
+      "projectionDate" : projection.projectionDate.toString().substring(0,10),
+      "movie" : projection.movie.id,
+      "room" : projection.room.id
+    }).subscribe();
+  }
+
+  deleteProjection(projection: Projection) {
+    this.http.delete(this.projectionsUrl+"/"+projection.id).subscribe(data => {
+      window.location.reload();
+    });
   }
 
   updateProjection(projection : Projection) {
@@ -56,18 +70,18 @@ export class ProjectionService {
     projection.movie = this.filteredMovies.pop();
     this.filteredRooms = this.rooms.filter(i=> i.name === projection.room.name);
     projection.room = this.filteredRooms.pop();
-    console.log({
-      "id" : 1,
-      "projectionDate" : projection.projectionDate.toString().substring(0,10),
-      "movie" : projection.movie.id,
-      "room" : projection.room
-    });
     this.http.put(this.projectionsUrl + "/" + projection.id, {
-      "id" : 1,
+      "id" : projection.id,
       "projectionDate" : projection.projectionDate.toString().substring(0,10),
       "movie" : projection.movie.id,
       "room" : projection.room.id
     }).subscribe();
+  }
+
+  reserveChair(projection : Projection, userName : string) {
+    this.http.post(this.projectionsUrl+"/reservation/"+projection.id+"/"+userName,"").subscribe(result => {
+      window.location.reload();
+    });
   }
 
 }

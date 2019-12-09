@@ -6,13 +6,15 @@
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
+      <th scope="col">Tools</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let coupon of coupons" (click)="onSelectCoupon(coupon)" [class.table-info]="coupon === selectedCoupon">
+    <tr *ngFor="let coupon of coupons" (click)="onSelectCoupon(coupon)" [class.table-info]="coupon === selectedCoupon"> 
         <th scope="row">{{ coupon.id }}</th>
         <td><a [routerLink]="['/coupons', coupon.id]">{{ coupon.name }}</a></td>
         <td>{{ coupon.description }}</td>
+        <td> <button mat-raised-button color="warn" (click)="onDeleteClick(coupon)">Delete</button> </td>
       </tr>
   </tbody>
 </table>

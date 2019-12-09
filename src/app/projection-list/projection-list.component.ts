@@ -30,10 +30,11 @@ export class ProjectionListComponent implements OnInit {
     if (projection.id > 0) {
       this.projectionService.updateProjection(projection);
     } else {
+      this.selectedProjection.id = this.projections.length+1;
       this.projectionService.addProjection(this.selectedProjection);
     }
     this.selectedProjection = null;
-    //window.location.reload();
+    window.location.reload();
   }
   
  
@@ -49,8 +50,11 @@ export class ProjectionListComponent implements OnInit {
       });*/
       this.projections = data;  
     })
-    console.log(this.projections);
     
+  }
+
+  onDeleteClick(projection : Projection) {
+    this.projectionService.deleteProjection(projection);
   }
 
   onNewClick() {

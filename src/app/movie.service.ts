@@ -41,4 +41,10 @@ export class MovieService {
     }).subscribe();
   }
 
+  deleteMovie(movie : Movie) {
+    this.http.delete(this.moviesUrl + "/" + movie.id).subscribe(result => {
+      window.location.reload();
+    });
+  }
+
 }

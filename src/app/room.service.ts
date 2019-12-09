@@ -4,13 +4,17 @@ import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { ObserversModule } from '@angular/cdk/observers';
+import { Observer, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
 
-  rooms: Room[] = []
+  rooms: Room[] = [];
+
+  deleteSuccess : Boolean = false;
 
   room: Room;
 
@@ -26,6 +30,12 @@ export class RoomService {
 
   getRooms() {
     return this.rooms;
+  }
+
+  deleteRoom(room : Room) {
+    this.http.delete(this.roomsUrl + "/" + room.id).subscribe(result => {
+      window.location.reload();
+    } );
   }
 
   addRoom(room : Room) {

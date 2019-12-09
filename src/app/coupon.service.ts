@@ -37,4 +37,8 @@ export class CouponService {
     this.http.put(this.couponsUrl + "/" + coupon.id, coupon).subscribe();
   }
 
+  deleteCoupon(coupon : Coupon) {
+    this.http.delete(this.couponsUrl + "/" + coupon.id).subscribe();
+  }
+
 }
