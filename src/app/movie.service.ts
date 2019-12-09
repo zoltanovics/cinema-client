@@ -37,7 +37,7 @@ export class MovieService {
       "name" : movie.name,
       "description" : movie.description,
       "genre" : movie.genre,
-      "projections" : movie.projections.filter
+      "projections" : movie.projections
     }).subscribe();
   }
 

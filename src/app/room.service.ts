@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import {Room } from './room';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
-import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { ObserversModule } from '@angular/cdk/observers';
-import { Observer, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

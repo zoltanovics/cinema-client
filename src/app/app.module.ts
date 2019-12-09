@@ -29,6 +29,7 @@ import { ProjectionService } from './projection.service';
 import { RoomService } from './room.service';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [MovieService,CouponService,ProjectionService,RoomService],
+  providers: [MovieService,CouponService,ProjectionService,RoomService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

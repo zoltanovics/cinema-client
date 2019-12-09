@@ -17,6 +17,8 @@ import { RoomDetailComponent } from '../room-detail/room-detail.component';
 import { ProjectionListComponent } from "../projection-list/projection-list.component";
 import { ProjectionFormComponent } from '../projection-form/projection-form.component';
 import { ProjectionDetailComponent } from '../projection-detail/projection-detail.component';
+import { UserListComponent } from '../user-list/user-list.component';
+import { UserFormComponent } from '../user-form/user-form.component';
 
 const routes: Routes = [
   {
@@ -71,6 +73,14 @@ const routes: Routes = [
   {
     path: 'projections',
     component: ProjectionListComponent
+  },
+  {
+    path: 'users/:id',
+    component: UserFormComponent
+  },
+  {
+    path: 'users',
+    component: UserListComponent
   },
 ];
 
