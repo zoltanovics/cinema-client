@@ -78,10 +78,18 @@ export class ProjectionService {
     }).subscribe();
   }
 
-  reserveChair(projection : Projection, userName : string) {
-    this.http.post(this.projectionsUrl+"/reservation/"+projection.id+"/"+userName,"").subscribe(result => {
-      window.location.reload();
-    });
+  reserveChair(projection : Projection, userName : string,couponName : string) {
+    console.log(couponName);
+    if (couponName != "") {
+      this.http.post(this.projectionsUrl+"/reservation/"+projection.id+"/"+userName+"/"+couponName,"").subscribe(result => {
+        window.location.reload();
+      });
+    }
+    else {
+      this.http.post(this.projectionsUrl+"/reservation/"+projection.id+"/"+userName,"").subscribe(result => {
+        window.location.reload();
+      });
+    }
   }
 
 }

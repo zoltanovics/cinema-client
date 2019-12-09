@@ -6,6 +6,8 @@
   <dt class="col-sm-3">Email</dt>
   <dd class="col-sm-9">{{ user.email }}</dd>
 
+  
+
   <dt class="col-sm-3"><mat-form-field>
         <input
           [(ngModel)]="couponName"
@@ -15,4 +17,19 @@
       </mat-form-field></dt>
     <dd class="col-sm-9"><button mat-raised-button color="primary" (click)="onAddCouponClick()">Add coupon</button></dd>
 </dl>
+
+<dt class="col-sm-3">Coupons</dt>
+  <dd class="col-sm-9">
+    <div *ngFor="let coupon of user.coupons">
+        {{coupon.name}} <button mat-raised-button color="warn" (click)="onDeleteCouponClick(coupon)">Delete</button>
+    </div>
+  </dd>
+
+  <dt class="col-sm-3">Projections</dt>
+  <dd class="col-sm-9">
+    <div *ngFor="let projection of user.tickets">
+        {{projection.movie.name}} - {{projection.projectionDate.toString().substring(0,10)}}              <button mat-raised-button color="warn" (click)="onDeleteProjectionClick(projection)">Delete</button>
+    </div>
+  </dd>
+
 <button mat-raised-button routerLink="/users">Back</button>

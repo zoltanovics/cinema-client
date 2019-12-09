@@ -14,6 +14,8 @@ export class ProjectionDetailComponent implements OnInit {
 
   userName: string = "";
 
+  couponName: string = "";
+
   constructor(
     private route: ActivatedRoute,
     private projectionService: ProjectionService
@@ -27,7 +29,7 @@ export class ProjectionDetailComponent implements OnInit {
   }
 
   onReservationClick() {
-    this.projectionService.reserveChair(this.projection,this.userName);
+    this.projectionService.reserveChair(this.projection,this.userName,this.couponName);
   }
 
 }

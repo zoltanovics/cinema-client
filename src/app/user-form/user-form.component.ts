@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../user';
+import { Projection } from '../projection';
+import { Coupon } from '../coupon';
 
 @Component({
   selector: 'user-form',
@@ -29,5 +31,14 @@ export class UserFormComponent implements OnInit {
   onAddCouponClick() {
     this.userService.addCoupon(this.user, this.couponName);
   }
+
+  onDeleteProjectionClick(projection : Projection) {
+    this.userService.deleteProjection(this.user,projection);
+  }
+
+  onDeleteCouponClick(coupon : Coupon) {
+    this.userService.deleteCoupon(this.user,coupon);
+  }
+
 
 }
